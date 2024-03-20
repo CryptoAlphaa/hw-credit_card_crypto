@@ -1,4 +1,3 @@
-# rubocop:disable Layout/EndOfLine this part is somesort of conflict between the UNIX and WINDOWS OS
 # frozen_string_literal: false
 
 # Module to do DTC enctrption and decription
@@ -76,5 +75,3 @@ module DoubleTranspositionCipher
     final
   end
 end
-
-# rubocop:enable Layout/EndOfLine
