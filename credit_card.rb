@@ -2,6 +2,7 @@
 
 require_relative './luhn_validator'
 require 'json'
+require 'rbnacl'
 
 # CreditCard class
 class CreditCard
@@ -36,7 +37,8 @@ class CreditCard
 
   # return a new CreditCard object given a serialized (JSON) representation
   def self.from_s(card_s)
-    # TODO: deserializing a CreditCard 
+    # TODO: deserializing a CreditCard
+    JSON.parse(card_s)
   end
 
   # return a hash of the serialized credit card object
@@ -53,7 +55,7 @@ class CreditCard
     # TODO: implement this method
     #   - Use sha256 to create a cryptographically secure hash.
     #   - Credit cards with identical information should produce the same hash
-    Digest::SHA256.hexdigest(to_s)
+    RbNaCl::Hash.sha256(to_s).to_s
   end
 end
 

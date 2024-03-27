@@ -64,5 +64,4 @@ describe 'Test card info encryption' do
       _(dec).must_equal @cc.to_s
     end
   end
-
 end
