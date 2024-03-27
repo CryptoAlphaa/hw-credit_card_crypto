@@ -49,4 +49,19 @@ describe 'Test card info encryption' do
       end
     end
   end
+
+  describe 'Using Modern Symetric Cipher' do
+    skkey = ModernSymmetricCipher.generate_new_key
+    it 'should encrypt card information' do
+      enc = ModernSymmetricCipher.encrypt(@cc, skkey)
+      _(enc).wont_equal @cc.to_s
+      _(enc).wont_be_nil
+    end
+
+    it 'should decrypt text' do
+      enc = ModernSymmetricCipher.encrypt(@cc, skkey)
+      dec = ModernSymmetricCipher.decrypt(enc, skkey)
+      _(dec).must_equal @cc.to_s
+    end
+  end
 end
